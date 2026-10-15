@@ -1,20 +1,24 @@
+// src/app/product/[slug]/page.tsx
+import { Suspense } from "react";
 import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { fetchProductBySlug } from "@/lib/api";
 import { toBengaliNumber, getUnitLabel, formatPrice } from "@/lib/utils";
 import Link from "next/link";
-import { unstable_noStore as noStore } from "next/cache";
+import { connection } from "next/server";
 
-export default async function ProductDetailsPage({
+async function ProductDetailsContent({
     params,
 }: {
     params: Promise<{ slug: string }>;
 }) {
-    noStore();
+    // Dynamic execution boundary for cacheComponents
+    await connection();
+
     const { slug } = await params;
 
-    // 1. Session Check
+    // 1. Session Check via headers
     let session = null;
     try {
         session = await auth.api.getSession({
@@ -213,5 +217,28 @@ export default async function ProductDetailsPage({
                 </div>
             </div>
         </div>
+    );
+}
+
+export default function ProductDetailsPage({
+    params,
+}: {
+    params: Promise<{ slug: string }>;
+}) {
+    return (
+        <Suspense
+            fallback={
+                <div className="max-w-7xl mx-auto px-4 py-8 space-y-6">
+                    <div className="h-32 bg-white rounded-2xl animate-pulse" />
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div className="h-28 bg-white rounded-2xl animate-pulse" />
+                        <div className="h-28 bg-white rounded-2xl animate-pulse" />
+                        <div className="h-28 bg-white rounded-2xl animate-pulse" />
+                    </div>
+                </div>
+            }
+        >
+            <ProductDetailsContent params={params} />
+        </Suspense>
     );
 }
