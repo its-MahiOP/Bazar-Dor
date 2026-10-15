@@ -3,8 +3,16 @@ import Navbar from "@/components/Navbar";
 import Ticker from "@/components/Ticker";
 import Footer from "@/components/Footer";
 import { ToastContainer } from "react-toastify";
+import type { Metadata } from 'next';
 import "react-toastify/dist/ReactToastify.css";
 import "./globals.css";
+
+export const metadata: Metadata = {
+  title: {
+    default: 'বাজার দর', // Default title for the home page
+    template: '%s | বাজার দর', // Pattern for child pages
+  },
+};
 
 export default function RootLayout({
     children,

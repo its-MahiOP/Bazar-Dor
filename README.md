@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛒 বাজার দর (BazarDor)
 
-## Getting Started
+**প্রয়োজনীয় নিত্যপণ্যের দাম এক নজরে।**  
+BazarDor is a modern, responsive price-tracking web application built to provide citizens with daily updates, analytics, and market comparisons for essential commodities in Bangladesh.
 
-First, run the development server:
+---
+
+## 🛠️ Technologies Used
+
+- **Framework:** Next.js 16 (App Router with Turbopack)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS
+- **Authentication:** BetterAuth (MongoDB Adapter)
+    - Supports Email/Password, Google OAuth, and GitHub OAuth
+- **Database:** MongoDB Atlas
+- **Notifications:** React-Toastify
+- **Deployment:** Vercel
+
+---
+
+## ✨ Key Features
+
+1. **Live Price Marquee Ticker (প্রাইস টিকার):**  
+   An automated scrolling header marquee displaying real-time prices and percentage changes for all core commodities.
+
+2. **Automated Price Risers & Fallers Sorting (আজ দাম বেড়েছে / কমেছে):**  
+   Dedicated sections highlighting the top 6 price risers and top 6 price fallers, automatically sorted in descending order based on percentage fluctuations.
+
+3. **Numeric Bengali Price Sorting (বাংলা সংখ্যা ভিত্তিক সর্টিং):**  
+   Category filtering with custom numeric sorting capabilities (Default, Price: Low to High, Price: High to Low) fully compatible with Bengali numerals.
+
+4. **Protected Market Price Comparison (বাজারভিত্তিক বিস্তারিত দাম):**  
+   Detailed authenticated view providing market-wise minimum, maximum, and average price comparisons across different divisions in Bangladesh.
+
+5. **Profile & Avatar Management (প্রোফাইল ব্যবস্থাপনা):**  
+   Complete user session management featuring OAuth profile image auto-synchronization (Google & GitHub) and standard name/avatar update capabilities.
+
+---
+
+## 🚀 Getting Started Locally
+
+### 1. Clone the repository
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone [https://github.com/your-username/bazar-dor.git](https://github.com/your-username/bazar-dor.git)
+cd bazar-dor
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
