@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Ticker from "@/components/Ticker";
+import Hero from "@/components/Hero";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -26,8 +27,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
         >
             <body className="min-h-full flex flex-col">
-                <Navbar categories={[]} />
-                <Ticker products={[]} />
+                <Navbar />
+                <Ticker />
+                <Hero />
                 {children}
             </body>
         </html>
