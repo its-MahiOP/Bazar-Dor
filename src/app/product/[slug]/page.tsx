@@ -110,7 +110,7 @@ async function ProductDetailsContent({
                     </div>
 
                     {/* Today's Price Widget */}
-                    <div className="bg-[#f4f6f4] p-5 rounded-2xl border border-gray-200/50 text-center min-w-[160px] self-end md:self-auto">
+                    <div className="bg-[#f4f6f4] p-5 rounded-2xl border border-gray-200/50 text-center min-w-40 self-end md:self-auto">
                         <span className="text-xs text-gray-500 font-medium block">
                             আজকের দাম
                         </span>
