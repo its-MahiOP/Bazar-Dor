@@ -132,7 +132,7 @@ export default function Navbar({
 
             {/* Categories Row */}
             <nav className="bg-[#f9fafb] border-t border-b border-gray-100 overflow-x-auto">
-                <div className="max-w-7xl mx-auto px-4 flex items-center gap-8 py-2.5 text-sm font-medium whitespace-nowrap min-h-[42px]">
+                <div className="max-w-7xl mx-auto px-4 flex items-center gap-8 py-2.5 text-sm font-medium whitespace-nowrap min-height: 42px">
                     {categories.length === 0 ? (
                         <div className="flex items-center gap-6 animate-pulse">
                             {[...Array(6)].map((_, i) => (
