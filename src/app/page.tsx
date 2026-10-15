@@ -1,4 +1,3 @@
-// src/app/page.tsx
 import Hero from "@/components/Hero";
 import ProductCard from "@/components/ProductCard";
 import { fetchProducts } from "@/lib/api";
