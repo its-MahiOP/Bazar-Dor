@@ -34,14 +34,3 @@ BazarDor is a modern, responsive price-tracking web application built to provide
 
 5. **Profile & Avatar Management (প্রোফাইল ব্যবস্থাপনা):**  
    Complete user session management featuring OAuth profile image auto-synchronization (Google & GitHub) and standard name/avatar update capabilities.
-
----
-
-## 🚀 Getting Started Locally
-
-### 1. Clone the repository
-
-```bash
-git clone [https://github.com/your-username/bazar-dor.git](https://github.com/your-username/bazar-dor.git)
-cd bazar-dor
-```
