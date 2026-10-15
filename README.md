@@ -34,3 +34,4 @@ BazarDor is a modern, responsive price-tracking web application built to provide
 
 5. **Profile & Avatar Management (প্রোফাইল ব্যবস্থাপনা):**  
    Complete user session management featuring OAuth profile image auto-synchronization (Google & GitHub) and standard name/avatar update capabilities.
+

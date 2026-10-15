@@ -3,6 +3,7 @@
 import { useState, useEffect, use, Suspense } from "react";
 import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
+import ProductSkeleton from "@/components/ProductSkeleton";
 import { fetchProducts, fetchCategories } from "@/lib/api";
 import { Product, Category } from "@/types";
 import { toBengaliNumber } from "@/lib/utils";
@@ -70,15 +71,16 @@ function CategoryContent({ params }: { params: Promise<{ slug: string }> }) {
     return (
         <div className="bg-[#f4f6f4] min-h-screen py-8">
             <div className="max-w-7xl mx-auto px-4 space-y-6">
+                {/* Header Bar */}
                 <div className="bg-white rounded-2xl border border-gray-100 p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 shadow-sm">
                     <div>
                         <div className="flex items-center gap-3">
                             <span className="text-3xl">
-                                {currentCategory?.icon}
+                                {currentCategory?.icon || "📦"}
                             </span>
                             <div>
                                 <h1 className="text-2xl font-bold text-gray-900">
-                                    {currentCategory?.nameBn}
+                                    {currentCategory?.nameBn || "ক্যাটাগরি"}
                                 </h1>
                                 <p className="text-xs text-gray-500 mt-0.5">
                                     {loading
@@ -89,6 +91,7 @@ function CategoryContent({ params }: { params: Promise<{ slug: string }> }) {
                         </div>
                     </div>
 
+                    {/* Sort Control */}
                     <div className="flex items-center gap-2">
                         <label
                             htmlFor="sort-dropdown"
@@ -116,17 +119,11 @@ function CategoryContent({ params }: { params: Promise<{ slug: string }> }) {
                     </div>
                 </div>
 
+                {/* Product Cards Grid OR Skeleton Loader */}
                 {loading ? (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
-                        {[...Array(6)].map((_, i) => (
-                            <div
-                                key={i}
-                                className="h-36 bg-gray-200/80 animate-pulse rounded-2xl"
-                            ></div>
-                        ))}
-                    </div>
+                    <ProductSkeleton count={6} />
                 ) : (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                         {sortedProducts.map((product) => (
                             <ProductCard key={product.id} product={product} />
                         ))}
@@ -146,15 +143,7 @@ export default function CategoryPage({
         <Suspense
             fallback={
                 <div className="max-w-7xl mx-auto px-4 py-8">
-                    <div className="h-24 bg-white rounded-2xl animate-pulse mb-6" />
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                        {[...Array(6)].map((_, i) => (
-                            <div
-                                key={i}
-                                className="h-36 bg-gray-200/80 animate-pulse rounded-2xl"
-                            />
-                        ))}
-                    </div>
+                    <ProductSkeleton count={6} />
                 </div>
             }
         >
