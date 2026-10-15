@@ -1,4 +1,3 @@
-// src/components/Ticker.tsx
 "use client";
 
 import { useState, useEffect } from "react";
@@ -21,7 +20,7 @@ export default function Ticker({
                     console.error("Ticker product fetch error:", err),
                 );
         }
-    }, []);
+    });
 
     if (products.length === 0) {
         return (
