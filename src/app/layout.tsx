@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import Navbar from "@/components/Navbar";
 import Ticker from "@/components/Ticker";
-// import Footer from "@/components/Footer";
+import Footer from "@/components/Footer";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./globals.css";
@@ -22,7 +22,7 @@ export default function RootLayout({
                 </Suspense>
                 <Ticker />
                 <main className="grow">{children}</main>
-                {/* <Footer /> */}
+                <Footer />
                 <ToastContainer position="bottom-right" autoClose={3000} />
             </body>
         </html>

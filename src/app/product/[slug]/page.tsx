@@ -4,23 +4,31 @@ import { headers } from "next/headers";
 import { fetchProductBySlug } from "@/lib/api";
 import { toBengaliNumber, getUnitLabel, formatPrice } from "@/lib/utils";
 import Link from "next/link";
+import { unstable_noStore as noStore } from "next/cache";
 
 export default async function ProductDetailsPage({
     params,
 }: {
     params: Promise<{ slug: string }>;
 }) {
+    noStore();
     const { slug } = await params;
 
-    // Verify Authentication
-    const session = await auth.api.getSession({
-        headers: await headers(),
-    });
+    // 1. Session Check
+    let session = null;
+    try {
+        session = await auth.api.getSession({
+            headers: await headers(),
+        });
+    } catch (e) {
+        console.error("Auth session fetch error:", e);
+    }
 
     if (!session) {
         redirect(`/signin?callback=/product/${slug}`);
     }
 
+    // 2. Product Data Fetch
     const product = await fetchProductBySlug(slug);
 
     if (!product) {
